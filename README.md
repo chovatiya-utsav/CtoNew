@@ -12,11 +12,11 @@ A production-ready frontend for a bus ticket booking platform built with React, 
 
 ## Features
 
-### Phase 1 (Completed)
+### Phase 1 (Completed) ✅
 - ✅ Project setup with Vite + React + TypeScript
 - ✅ Tailwind CSS configuration with custom design tokens
 - ✅ Comprehensive design system
-- ✅ Reusable UI component library:
+- ✅ Reusable UI component library (10+ components):
   - Button (multiple variants, sizes, loading states)
   - Input (with validation, icons, error states)
   - Card (flexible layout with header/footer)
@@ -26,33 +26,65 @@ A production-ready frontend for a bus ticket booking platform built with React, 
   - Footer (informational links)
   - LoadingSpinner (animated loader)
   - SkeletonLoader (content placeholders)
+  - BusCard (detailed bus information display)
+  - SearchForm (comprehensive search interface)
+  - FiltersSidebar (advanced filtering options)
 - ✅ Landing page with hero section, trust signals, and how-it-works
 - ✅ Responsive design (mobile-first approach)
 - ✅ Accessibility features (ARIA labels, keyboard navigation)
 
+### Phase 2 & 3 (Completed) ✅
+- ✅ Search interface with comprehensive filters
+  - Bus type filtering (AC/Non-AC, Seater/Sleeper)
+  - Price range slider
+  - Departure time filters (Early Morning, Morning, Afternoon, Evening)
+  - Amenities filtering (AC, WiFi, USB Charging, etc.)
+  - Minimum rating filter
+- ✅ Bus listing with sorting
+  - Sort by price (low to high, high to low)
+  - Sort by rating
+  - Sort by departure time
+- ✅ BusCard component with rich information
+  - Departure and arrival times
+  - Route information
+  - Duration display
+  - Pricing
+  - Seat availability with color-coded badges
+  - Ratings and reviews
+  - Amenities badges
+  - Call-to-action button
+- ✅ Mobile-responsive filters (modal on mobile)
+- ✅ Empty state and loading states
+- ✅ Mock data for demonstration
+
 ### Coming Soon
-- 🔄 Phase 2: Search interface with filters
-- 🔄 Phase 3: Seat selection UI
-- 🔄 Phase 4: Booking flow and payment integration
+- 🔄 Seat selection UI with interactive seat map
+- 🔄 Booking flow and checkout
+- 🔄 Payment integration
+- 🔄 User authentication
+- 🔄 Booking history and management
 
 ## Project Structure
 
 ```
 src/
 ├── components/        # Reusable UI components
-│   ├── Button.tsx
-│   ├── Input.tsx
-│   ├── Card.tsx
 │   ├── Badge.tsx
-│   ├── Modal.tsx
-│   ├── Header.tsx
+│   ├── BusCard.tsx
+│   ├── Button.tsx
+│   ├── Card.tsx
+│   ├── FiltersSidebar.tsx
 │   ├── Footer.tsx
+│   ├── Header.tsx
+│   ├── Input.tsx
 │   ├── LoadingSpinner.tsx
+│   ├── Modal.tsx
+│   ├── SearchForm.tsx
 │   ├── SkeletonLoader.tsx
 │   └── index.ts      # Barrel exports
 ├── pages/            # Page components
-│   ├── Landing.tsx
-│   └── Search.tsx
+│   ├── Landing.tsx   # Landing page with hero, features, popular routes
+│   └── Search.tsx    # Search results page with filters and sorting
 ├── layouts/          # Layout components
 │   └── MainLayout.tsx
 ├── styles/           # Global styles and design tokens
@@ -61,12 +93,13 @@ src/
 ├── hooks/            # Custom React hooks
 │   └── useSearch.ts
 ├── utils/            # Utility functions
-│   └── helpers.ts
+│   ├── helpers.ts
+│   └── mockData.ts   # Mock bus data for demonstration
 ├── types/            # TypeScript type definitions
 │   └── index.ts
 ├── assets/           # Static assets
 │   └── icons/
-├── App.tsx           # Main app component
+├── App.tsx           # Main app component with routing
 └── main.tsx          # App entry point
 ```
 
