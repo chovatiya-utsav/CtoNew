@@ -24,6 +24,9 @@ const Landing: React.FC = () => {
 
       <section className="py-16 px-4">
         <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
+            Trusted by Travelers
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <Card padding="lg" className="text-center">
               <div className="flex justify-center mb-4">
@@ -42,7 +45,7 @@ const Landing: React.FC = () => {
                 </div>
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                500+
+                10K+
               </h3>
               <p className="text-gray-600">Buses Available</p>
             </Card>
@@ -64,7 +67,7 @@ const Landing: React.FC = () => {
                 </div>
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                1M+
+                500K+
               </h3>
               <p className="text-gray-600">Happy Travelers</p>
             </Card>
@@ -86,9 +89,9 @@ const Landing: React.FC = () => {
                 </div>
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                4.5/5
+                1M+
               </h3>
-              <p className="text-gray-600">Average Rating</p>
+              <p className="text-gray-600">Reviews</p>
             </Card>
           </div>
         </div>
@@ -211,16 +214,16 @@ const Landing: React.FC = () => {
               <div className="flex justify-between items-start mb-4">
                 <div>
                   <h3 className="text-xl font-semibold text-gray-900">
-                    Bangalore to Chennai
+                    Bangalore to Mysore
                   </h3>
                   <p className="text-gray-600 text-sm">Volvo Multi-Axle</p>
                 </div>
-                <Badge variant="info">New</Badge>
+                <Badge variant="success">Popular</Badge>
               </div>
               <div className="flex justify-between items-end">
                 <div>
                   <p className="text-gray-600 text-sm">Starting from</p>
-                  <p className="text-2xl font-bold text-blue-600">₹800</p>
+                  <p className="text-2xl font-bold text-blue-600">₹400</p>
                 </div>
                 <Button variant="tertiary" size="sm">
                   View Buses
@@ -228,6 +231,24 @@ const Landing: React.FC = () => {
               </div>
             </Card>
           </div>
+        </div>
+      </section>
+
+      <section className="py-16 px-4 bg-gradient-to-br from-blue-600 to-blue-800 text-white">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            Ready to Start Your Journey?
+          </h2>
+          <p className="text-xl mb-8 text-blue-100">
+            Book your bus tickets now and travel comfortably across India
+          </p>
+          <Button
+            variant="secondary"
+            size="lg"
+            onClick={() => (window.location.href = '/search')}
+          >
+            Search Buses Now
+          </Button>
         </div>
       </section>
     </div>

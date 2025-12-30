@@ -36,13 +36,14 @@ const FiltersSidebar: React.FC<FiltersSidebarProps> = ({
   ];
 
   const departureTimeOptions = [
-    { label: 'Early Morning (12 AM - 6 AM)', value: 'early_morning' },
-    { label: 'Morning (6 AM - 12 PM)', value: 'morning' },
-    { label: 'Afternoon (12 PM - 6 PM)', value: 'afternoon' },
-    { label: 'Evening (6 PM - 12 AM)', value: 'evening' },
+    { label: 'Early Morning (5 AM - 8 AM)', value: 'early_morning' },
+    { label: 'Morning (8 AM - 12 PM)', value: 'morning' },
+    { label: 'Afternoon (12 PM - 5 PM)', value: 'afternoon' },
+    { label: 'Evening (5 PM - 10 PM)', value: 'evening' },
+    { label: 'Night (10 PM - 5 AM)', value: 'night' },
   ];
 
-  const amenityOptions = ['AC', 'WiFi', 'USB Charging', 'Water Bottle', 'Snacks'];
+  const amenityOptions = ['AC', 'WiFi', 'USB Charging', 'Water Bottle', 'Snacks', 'Reading Light', 'Blanket'];
 
   const handleBusTypeToggle = (type: string) => {
     if (busTypes.includes(type)) {
@@ -101,7 +102,7 @@ const FiltersSidebar: React.FC<FiltersSidebarProps> = ({
             <input
               type="range"
               min="0"
-              max="1000"
+              max="5000"
               value={priceRange[1]}
               onChange={(e) =>
                 onPriceRangeChange([priceRange[0], Number(e.target.value)])
@@ -172,6 +173,24 @@ const FiltersSidebar: React.FC<FiltersSidebarProps> = ({
               </label>
             ))}
           </div>
+        </div>
+
+        <div className="pt-4">
+          <Button
+            variant="primary"
+            size="md"
+            fullWidth
+            onClick={() => {
+              // Trigger re-filter by just updating with current values
+              onBusTypesChange([...busTypes]);
+              onPriceRangeChange([...priceRange]);
+              onDepartureTimesChange([...departureTimeFilters]);
+              onAmenitiesChange([...amenities]);
+              onMinRatingChange(minRating);
+            }}
+          >
+            Apply Filters
+          </Button>
         </div>
       </div>
     </div>
