@@ -7,26 +7,32 @@ import {
   Modal,
 } from '../components';
 import { mockBuses } from '../utils/mockData';
-import type { Bus } from '../types';
+import type { Bus, SearchParams } from '../types';
 
 type SortOption = 'price_low' | 'price_high' | 'rating' | 'departure';
 
 const Search: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [sortBy, setSortBy] = useState<SortOption>('price_low');
-  const [showResults, setShowResults] = useState(true);
+  const [showResults, setShowResults] = useState(false);
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
   const [selectedBus, setSelectedBus] = useState<Bus | null>(null);
+  const [searchResults, setSearchResults] = useState<Bus[]>(mockBuses);
 
   const [busTypeFilters, setBusTypeFilters] = useState<string[]>([]);
-  const [priceRange, setPriceRange] = useState<[number, number]>([0, 1000]);
+  const [priceRange, setPriceRange] = useState<[number, number]>([0, 5000]);
   const [departureTimeFilters, setDepartureTimeFilters] = useState<string[]>([]);
   const [amenityFilters, setAmenityFilters] = useState<string[]>([]);
   const [minRating, setMinRating] = useState(0);
 
-  const handleSearch = () => {
+  const handleSearch = (params: SearchParams) => {
     setIsLoading(true);
+    // Simulate API call with random selection
     setTimeout(() => {
+      // Randomly select 5-15 buses from the mock data
+      const count = Math.floor(Math.random() * 11) + 5; // 5-15 buses
+      const shuffled = [...mockBuses].sort(() => 0.5 - Math.random());
+      setSearchResults(shuffled.slice(0, count));
       setIsLoading(false);
       setShowResults(true);
     }, 1000);
@@ -34,7 +40,7 @@ const Search: React.FC = () => {
 
   const handleClearFilters = () => {
     setBusTypeFilters([]);
-    setPriceRange([0, 1000]);
+    setPriceRange([0, 5000]);
     setDepartureTimeFilters([]);
     setAmenityFilters([]);
     setMinRating(0);
@@ -45,14 +51,15 @@ const Search: React.FC = () => {
     const isPM = time.includes('PM');
     const hour24 = isPM && hour !== 12 ? hour + 12 : hour === 12 && !isPM ? 0 : hour;
 
-    if (hour24 >= 0 && hour24 < 6) return 'early_morning';
-    if (hour24 >= 6 && hour24 < 12) return 'morning';
-    if (hour24 >= 12 && hour24 < 18) return 'afternoon';
-    return 'evening';
+    if (hour24 >= 5 && hour24 < 8) return 'early_morning';
+    if (hour24 >= 8 && hour24 < 12) return 'morning';
+    if (hour24 >= 12 && hour24 < 17) return 'afternoon';
+    if (hour24 >= 17 && hour24 < 22) return 'evening';
+    return 'night';
   };
 
   const filteredAndSortedBuses = useMemo(() => {
-    let filtered = mockBuses.filter((bus) => {
+    let filtered = searchResults.filter((bus) => {
       if (busTypeFilters.length > 0 && !busTypeFilters.includes(bus.busType)) {
         return false;
       }
